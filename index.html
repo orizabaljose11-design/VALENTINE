@@ -6,6 +6,28 @@
 <title>Para ti chiqui ❤️</title>
 
 <style>
+
+/* COLLAGE DE FONDO */
+.collage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  z-index: -1;
+}
+
+.collage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.25;
+}
+
+/* FONDO GENERAL */
 body {
   margin: 0;
   height: 100vh;
@@ -17,9 +39,10 @@ body {
   overflow: hidden;
 }
 
+/* CAJA PRINCIPAL */
 .box {
   background: #ffffffcc;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
   padding: 40px;
   border-radius: 25px;
   text-align: center;
@@ -63,13 +86,14 @@ button:hover {
   margin-top: 15px;
   color: #b5838d;
   font-weight: 500;
+  font-size: 18px;
 }
 
-/* confeti pastel */
+/* CONFETI PASTEL */
 .confetti {
   position: fixed;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   top: -10px;
   animation: caer linear forwards;
   border-radius: 50%;
@@ -80,21 +104,52 @@ button:hover {
     transform: translateY(100vh) rotate(720deg);
   }
 }
+
 </style>
 
 </head>
 
 <body>
 
+<!-- COLLAGE -->
+
+<div class="collage">
+  <img src="Batman.jpg">
+  <img src="benito.jpg">
+  <img src="gato.jpg">
+  <img src="max.jpg">
+  <img src="musica.jpg">
+  <img src="we.jpg">
+  <img src="we2.jpg">
+  <img src="Batman.jpg">
+  <img src="benito.jpg">
+  <img src="gato.jpg">
+  <img src="max.jpg">
+  <img src="we.jpg">
+</div>
+
+<!-- MUSICA -->
+
+<audio autoplay loop>
+  <source src="nsqk.mp3" type="audio/mpeg">
+</audio>
+
+<!-- CAJA -->
+
 <div class="box">
+
   <h1>Mariita, ¿queres ser mi Valentine? 💌</h1>
-  <button class="yes" onclick="acepto()">claro 💖</button>
-  <button class="no" id="noBtn">No 🤔</button>
+
+<button class="yes" onclick="acepto()">claro 💖</button>
+
+<button class="no" id="noBtn">No 🤔</button>
 
   <div id="mensaje"></div>
+
 </div>
 
 <script>
+
 const noBtn = document.getElementById("noBtn");
 const mensaje = document.getElementById("mensaje");
 
@@ -103,48 +158,76 @@ let intentos = 0;
 
 noBtn.addEventListener("mouseover", () => {
 
-  // mover botón
   const x = Math.random() * 300 - 150;
   const y = Math.random() * 300 - 150;
-  noBtn.style.transform = `translate(${x}px, ${y}px) scale(${escala})`;
 
-  // hacerlo más pequeño
+  noBtn.style.transform =
+    `translate(${x}px, ${y}px) scale(${escala})`;
+
   escala -= 0.1;
   if (escala < 0.4) escala = 0.4;
 
   intentos++;
 
-  // cambiar texto después de varios intentos
   if (intentos > 5) {
+
     noBtn.innerText = "Sí 😌";
+
     noBtn.classList.remove("no");
     noBtn.classList.add("yes");
+
     noBtn.onclick = acepto;
-    mensaje.innerText = "Excelente sos para tomar desiciones va 😌";
+
+    mensaje.innerText =
+      "Excelente sos para tomar decisiones va 😌";
+
   }
 
 });
 
 function acepto() {
 
-  mensaje.innerText = "Sabia que ibas a decir que sí TE AMO CHINA LOCA ❤️";
+  mensaje.innerText =
+    "Sabía que ibas a decir que sí, TE AMO CHINA LOCA ❤️";
 
-  // crear confeti
-  for (let i = 0; i < 100; i++) {
+  const colores = [
+    "#ffc8dd",
+    "#ffafcc",
+    "#cdb4db",
+    "#bde0fe",
+    "#a2d2ff",
+    "#f1c0e8"
+  ];
+
+  for (let i = 0; i < 120; i++) {
+
     const confetti = document.createElement("div");
+
     confetti.className = "confetti";
-    confetti.style.left = Math.random() * 100 + "vw";
-    confetti.style.background = 
-      `hsl(${Math.random() * 360}, 100%, 50%)`;
-    confetti.style.animationDuration = 
+
+    confetti.style.left =
+      Math.random() * 100 + "vw";
+
+    confetti.style.background =
+      colores[Math.floor(Math.random() * colores.length)];
+
+    confetti.style.animationDuration =
       (Math.random() * 3 + 2) + "s";
+
     document.body.appendChild(confetti);
 
     setTimeout(() => confetti.remove(), 5000);
+
   }
 
 }
+
 </script>
+
+</body>
+</html>
+
+
 
 </body>
 </html>
