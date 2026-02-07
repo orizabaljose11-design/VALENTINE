@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-
 <html lang="es">
+
 <head>
 <meta charset="UTF-8">
 <title>Para ti chiqui ❤️</title>
@@ -39,6 +39,21 @@ body {
   overflow: hidden;
 }
 
+/* BOTON MUSICA */
+#botonMusica {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #ffc8dd, #ffafcc);
+  border: none;
+  padding: 10px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #6d6875;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
 /* CAJA PRINCIPAL */
 .box {
   background: #ffffffcc;
@@ -70,18 +85,21 @@ button:hover {
   transform: scale(1.08);
 }
 
+/* BOTON SI */
 .yes {
   background: linear-gradient(135deg, #ffcad4, #f4acb7);
   color: #6d6875;
   box-shadow: 0 5px 15px rgba(244, 172, 183, 0.5);
 }
 
+/* BOTON NO */
 .no {
   background: linear-gradient(135deg, #d8e2dc, #ece4db);
   color: #6d6875;
   position: absolute;
 }
 
+/* MENSAJE */
 #mensaje {
   margin-top: 15px;
   color: #b5838d;
@@ -89,7 +107,7 @@ button:hover {
   font-size: 18px;
 }
 
-/* CONFETI PASTEL */
+/* CONFETI */
 .confetti {
   position: fixed;
   width: 12px;
@@ -106,7 +124,6 @@ button:hover {
 }
 
 </style>
-
 </head>
 
 <body>
@@ -135,24 +152,30 @@ button:hover {
 </audio>
 
 <button onclick="iniciarMusica()" id="botonMusica">
-  tocar aquí 💗
+  tocar música 💗
 </button>
 
 <!-- CAJA -->
 
 <div class="box">
 
-  <h1>Mariita, ¿queres ser mi Valentine? 💌</h1>
+<h1>Mariita, ¿queres ser mi Valentine? 💌</h1>
 
-<button class="yes" onclick="acepto()">claro 💖</button>
+<button class="yes" onclick="acepto()">
+  claro 💖
+</button>
 
-<button class="no" id="noBtn">No 🤔</button>
+<button class="no" id="noBtn">
+  No 🤔
+</button>
 
-  <div id="mensaje"></div>
+<div id="mensaje"></div>
 
 </div>
 
 <script>
+
+/* BOTON NO QUE HUYE */
 
 const noBtn = document.getElementById("noBtn");
 const mensaje = document.getElementById("mensaje");
@@ -183,16 +206,20 @@ noBtn.addEventListener("mouseover", () => {
     noBtn.onclick = acepto;
 
     mensaje.innerText =
-      "Excelente sos para tomar decisiones va 😌";
+      "Excelente decisión 😌";
 
   }
 
 });
 
+/* FUNCION ACEPTAR */
+
 function acepto() {
 
   mensaje.innerText =
     "Sabía que ibas a decir que sí, TE AMO CHINA LOCA ❤️";
+
+  iniciarMusica();
 
   const colores = [
     "#ffc8dd",
@@ -226,12 +253,19 @@ function acepto() {
 
 }
 
+/* FUNCION MUSICA */
+
+function iniciarMusica() {
+
+  const musica = document.getElementById("musica");
+
+  musica.play();
+
+  document.getElementById("botonMusica").style.display = "none";
+
+}
+
 </script>
-
-</body>
-</html>
-
-
 
 </body>
 </html>
