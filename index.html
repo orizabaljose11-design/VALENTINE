@@ -41,23 +41,24 @@ body {
 
 /* BOTON MUSICA */
 #botonMusica {
-  position: absolute;
-  top: 20px;
-  right: 20px;
+  position: fixed;
+  top: 30px;
+  right: 30px;
   background: linear-gradient(135deg, #ffc8dd, #ffafcc);
   border: none;
-  padding: 16px 28px;
-  border-radius: 30px;
+  padding: 20px 40px;
+  border-radius: 40px;
   cursor: pointer;
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 22px;
+  font-weight: bold;
   color: #6d6875;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
   transition: transform 0.2s ease;
+  z-index: 999;
 }
 
 #botonMusica:hover {
-  transform: scale(1.1);
+  transform: scale(1.15);
 }
 
 /* CAJA PRINCIPAL */
