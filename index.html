@@ -12,58 +12,67 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #ff758c, #ff7eb3);
-  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ffd6e0, #e7c6ff, #cdb4db);
+  font-family: 'Segoe UI', Arial, sans-serif;
   overflow: hidden;
 }
 
 .box {
-  background: white;
+  background: #ffffffcc;
+  backdrop-filter: blur(10px);
   padding: 40px;
-  border-radius: 20px;
+  border-radius: 25px;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
   position: relative;
 }
 
 h1 {
-  color: #ff4d6d;
+  color: #b5838d;
+  font-weight: 600;
 }
 
 button {
-  padding: 12px 25px;
-  margin: 10px;
+  padding: 12px 28px;
+  margin: 12px;
   border: none;
-  border-radius: 12px;
+  border-radius: 20px;
   font-size: 16px;
   cursor: pointer;
+  transition: all 0.25s ease;
   position: relative;
 }
 
+button:hover {
+  transform: scale(1.08);
+}
+
 .yes {
-  background: #ff4d6d;
-  color: white;
+  background: linear-gradient(135deg, #ffcad4, #f4acb7);
+  color: #6d6875;
+  box-shadow: 0 5px 15px rgba(244, 172, 183, 0.5);
 }
 
 .no {
-  background: gray;
-  color: white;
+  background: linear-gradient(135deg, #d8e2dc, #ece4db);
+  color: #6d6875;
   position: absolute;
 }
 
 #mensaje {
   margin-top: 15px;
-  color: #ff4d6d;
-  font-weight: bold;
+  color: #b5838d;
+  font-weight: 500;
 }
 
-/* confeti */
+/* confeti pastel */
 .confetti {
   position: fixed;
   width: 10px;
   height: 10px;
   top: -10px;
   animation: caer linear forwards;
+  border-radius: 50%;
 }
 
 @keyframes caer {
