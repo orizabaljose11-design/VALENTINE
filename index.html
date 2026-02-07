@@ -50,6 +50,27 @@ button {
   color: white;
   position: absolute;
 }
+
+#mensaje {
+  margin-top: 15px;
+  color: #ff4d6d;
+  font-weight: bold;
+}
+
+/* confeti */
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  top: -10px;
+  animation: caer linear forwards;
+}
+
+@keyframes caer {
+  to {
+    transform: translateY(100vh) rotate(720deg);
+  }
+}
 </style>
 
 </head>
@@ -57,27 +78,64 @@ button {
 <body>
 
 <div class="box">
-  <h1>¿Quieres ser mi Valentine? 💌</h1>
-  <button class="yes" onclick="acepto()">Sí 💖</button>
-  <button class="no" id="noBtn">No 😢</button>
+  <h1>Mariita, ¿queres ser mi Valentine? 💌</h1>
+  <button class="yes" onclick="acepto()">claro 💖</button>
+  <button class="no" id="noBtn">No 🤔</button>
+
+  <div id="mensaje"></div>
 </div>
 
 <script>
 const noBtn = document.getElementById("noBtn");
+const mensaje = document.getElementById("mensaje");
+
+let escala = 1;
+let intentos = 0;
 
 noBtn.addEventListener("mouseover", () => {
-  const x = Math.random() * 200 - 100;
-  const y = Math.random() * 200 - 100;
-  
-  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+
+  // mover botón
+  const x = Math.random() * 300 - 150;
+  const y = Math.random() * 300 - 150;
+  noBtn.style.transform = `translate(${x}px, ${y}px) scale(${escala})`;
+
+  // hacerlo más pequeño
+  escala -= 0.1;
+  if (escala < 0.4) escala = 0.4;
+
+  intentos++;
+
+  // cambiar texto después de varios intentos
+  if (intentos > 5) {
+    noBtn.innerText = "Sí 😌";
+    noBtn.classList.remove("no");
+    noBtn.classList.add("yes");
+    noBtn.onclick = acepto;
+    mensaje.innerText = "buena decisión 😌";
+  }
+
 });
 
 function acepto() {
-  alert("Sabía que dirías que sí ❤️");
-}
-</scrip
 
-    <button class="no" onclick="alert('Piénsalo otra vez 😌')">No 😢</button>
-  </div>
+  mensaje.innerText = "Sabía que dirías que sí ❤️";
+
+  // crear confeti
+  for (let i = 0; i < 100; i++) {
+    const confetti = document.createElement("div");
+    confetti.className = "confetti";
+    confetti.style.left = Math.random() * 100 + "vw";
+    confetti.style.background = 
+      `hsl(${Math.random() * 360}, 100%, 50%)`;
+    confetti.style.animationDuration = 
+      (Math.random() * 3 + 2) + "s";
+    document.body.appendChild(confetti);
+
+    setTimeout(() => confetti.remove(), 5000);
+  }
+
+}
+</script>
+
 </body>
 </html>
